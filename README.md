@@ -9,9 +9,14 @@ account with no photo set.
 Accounts posting the top-ranked comment on a video use a sexualised profile
 picture as the hook. The comment text itself is innocuous and contains no links;
 the account's channel page is where the payload lives, as a wall of "featured
-channels" whose shelf titles advertise pornography, each leading to another
-channel doing the same. The photo is the only thing doing the recruiting on the
-video page, so removing the photo removes the mechanism.
+channels" whose shelf titles advertise pornography and whose avatars are the
+pornography — a shelf renders each channel's picture, so the commenter's profile
+is already a contact-sheet of the material one click from the video, assembled
+out of other accounts so the page hosts nothing of its own.
+
+The photo is the only thing doing the recruiting on the video page, so removing
+the photo removes the mechanism there. See
+[`docs/spam-network.md`](docs/spam-network.md) for the observed structure.
 
 ## Why every avatar, and not just the bad ones
 
@@ -65,8 +70,12 @@ changes.
   Blocking it outright needs a `declarativeNetRequest` rule against the avatar
   CDN, which cannot distinguish comment avatars from every other avatar on the
   page.
-- **Scope is comments only** — watch pages and Shorts. Channel pages, search
-  results and the sidebar are untouched.
+- **Scope is comments only** — watch pages and Shorts. This is the significant
+  one: the channel page reached by clicking a comment avatar is where the
+  explicit images actually are, rendered as the avatars of the featured
+  channels. Covering it needs no detection, only the same unconditional
+  replacement applied to featured-channel shelves, but until that ships a single
+  click leaves the area this extension protects.
 
 ## Roadmap
 

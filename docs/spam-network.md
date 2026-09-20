@@ -13,15 +13,28 @@ signal.
 2. Its profile picture is a conventionally attractive young woman — sometimes a
    real photograph, sometimes generated. This is the only recruiting mechanism
    present on the video page.
-3. The profile has no external link and no videos. The payload is the
+3. That profile has no external link and no videos. The payload is the
    **featured channels** section: shelves whose *titles* advertise pornography,
    each shelf holding one channel.
-4. Those channels carry the actual explicit imagery, and repeat the structure
-   with more shelves and more channels.
+4. Those featured channels carry the explicit imagery and the external website
+   link, and repeat the structure with more shelves and more channels.
 
 Featured channels do not have to be your own, so the top-level account never
 hosts anything that violates policy. It is a pointer, and pointers are cheap to
 replace.
+
+### The exposure happens on the first click, not the second
+
+A featured-channels shelf renders each channel's **avatar** alongside its name,
+and the featured channels use explicit images as their avatars. So opening the
+commenter's profile — one click from the video — already presents a grid of
+pornographic thumbnails. Nothing needs to be clicked through to.
+
+This is the correction that matters most for anything built against these notes.
+The obvious reading is that the commenter's channel is a harmless signpost and
+the material is a further hop away; it is not. The commenter's channel page is
+itself a contact-sheet of the material, assembled out of other accounts' avatars
+so that the page hosts nothing of its own.
 
 ## Worked example
 
@@ -68,8 +81,12 @@ Zdislava Truus.
 - **Handles carry YouTube's auto-generated disambiguation suffix**
   (`@KatsiarynaIsa-w4j`), indicating the handle was accepted as offered at
   signup rather than chosen.
-- **No videos, no playlists, no external links** at either level. The account
-  exists only to point.
+- **No videos and no playlists at either level**, and no external link on the
+  top-level account. The website link appears on the featured channels, one hop
+  down — the top-level account carries nothing actionable at all.
+- **The avatar is the medium at every level.** Bait photo on the comment,
+  explicit photos on the featured channels, and those same explicit photos
+  rendered on the commenter's own page by the featured-channels shelves.
 
 ## Obfuscation inventory
 
