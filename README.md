@@ -71,7 +71,9 @@ changes.
 ## Roadmap
 
 Detection of the accounts themselves, used to remove their comments silently
-rather than to mark them:
+rather than to mark them. [`docs/spam-network.md`](docs/spam-network.md) records
+the observed structure these rules are derived from, including the verbatim
+shelf titles that seed the lexicon.
 
 - Fetch the author's channel via the InnerTube `browse` endpoint — not an HTML
   fetch, which hits the EU consent wall when unauthenticated and returns a
