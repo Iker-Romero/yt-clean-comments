@@ -2,9 +2,21 @@
 
 Field notes, observed 2026-09-19. This is an observational record, not a plan —
 it is the raw input to the detection lexicon described in the README's *Roadmap*,
-and re-deriving it means clicking through the graph again. Verbatim strings are
-reproduced exactly, including their obfuscation, because the obfuscation is the
-signal.
+and re-deriving it means clicking through the graph again.
+
+## What this file does and does not reproduce
+
+**Shelf titles and other matched text are reproduced verbatim, including their
+obfuscation, because the obfuscation is the signal** and this is the file the
+normaliser and lexicon are written against. It is the one place in the repo
+those strings belong; the README deliberately carries none of them.
+
+**Account handles, channel names and the source video are withheld.** They add
+nothing to the detection rules — the rules match on shape, not on identity —
+and writing them down turns a description of the material into directions to
+it. Someone reading these notes to work on the filter should not be one search
+away from the thing the filter exists to remove. Where an account has to be
+referred to, it is lettered.
 
 ## The pattern
 
@@ -41,31 +53,25 @@ so that the page hosts nothing of its own.
 
 ## Worked example
 
-On a Tucker Carlson Short (`OpenAI Almost Brought Down the Internet…`, ~660k
-views, three days old at time of observation), the first-ranked comment:
+On a Short from a major US political-commentary channel (~660k views, three days
+old at time of observation), the first-ranked comment — 1.6K likes, 37 replies —
+was a generic on-topic remark about AI systems being misused. Nothing in it is
+actionable: no link, no solicitation, nothing that reads as spam in isolation.
 
-> **@minalhia** — 1.6K likes, 37 replies
-> "It appears that AI 'breaking free' is a really good cover for humans using AI
-> inappropriately and hacking databases"
-
-Nothing in the comment is actionable. The channel `@minalhia` (432 subscribers)
-has no links and no content, and four featured-channel shelves:
+The commenter, **account A** (432 subscribers), has no links and no content, and
+four featured-channel shelves:
 
 | Shelf title | Channel | Subscribers |
 | --- | --- | --- |
-| `👇🏻Join Legit S3XClub👇🏻` | Katsiaryna Isa | 494 |
-| `👇🏻New Collection T E E N P 0 R N👇🏻` | Lotti Celestine | 1.53K |
-| `👇🏾AFRO SEXCLUB👇🏾` | Natasha Raelyn | 492 |
+| `👇🏻Join Legit S3XClub👇🏻` | B | 494 |
+| `👇🏻New Collection T E E N P 0 R N👇🏻` | C | 1.53K |
+| `👇🏾AFRO SEXCLUB👇🏾` | D | 492 |
 
-One channel per category. Following the first, `Katsiaryna Isa`
-(`@KatsiarynaIsa-w4j`, 494 subscribers), the structure repeats at greater width
-— twelve channels across shelves titled `👇🏻Join Legit S3XClub👇🏻`,
-`👇🏾AFRO SEXCLUB👇🏾`, `👇🏻Please Lesbian Only🚨👇🏻`,
-`👇🏻Please GAY Only🚨👇🏻`, `🔥yoursexymommy🔥`, `👇🏻Adorable Schoolgirl👇🏻`,
-`👇🏻New Collection T E E N P 0 R N👇🏻` — carrying names such as Linda
-Concepción, Moon Clara, Hanga Ermioni, Isa Kája, Irinushka Chela, Ulrikke
-Viviana, Rike India, Cindy Milly, Bailey Fieke, Amanda Celia, Alberta Tara,
-Zdislava Truus.
+One channel per category. Following the first, **channel B** (494 subscribers),
+the structure repeats at greater width — twelve channels across shelves titled
+`👇🏻Join Legit S3XClub👇🏻`, `👇🏾AFRO SEXCLUB👇🏾`,
+`👇🏻Please Lesbian Only🚨👇🏻`, `👇🏻Please GAY Only🚨👇🏻`, `🔥yoursexymommy🔥`,
+`👇🏻Adorable Schoolgirl👇🏻`, `👇🏻New Collection T E E N P 0 R N👇🏻`.
 
 ## What generalises
 
@@ -78,12 +84,15 @@ Zdislava Truus.
 - **Subscriber counts cluster in the low hundreds to low thousands** — 316 to
   1.53K across every channel observed. Consistent with churn: accounts are
   burned and replaced, and the counts rebuild fast.
-- **Display names are two given names, often from different languages**
-  (Katsiaryna Isa, Hanga Ermioni, Zdislava Truus, Ulrikke Viviana). Plausibly
-  generated from name lists.
-- **Handles carry YouTube's auto-generated disambiguation suffix**
-  (`@KatsiarynaIsa-w4j`), indicating the handle was accepted as offered at
-  signup rather than chosen.
+- **Display names are a pair of given names, each common in a different
+  language** — a Slavic first name beside a Greek second, a Scandinavian one
+  beside a Romance one. No surnames. Every name observed fits this shape, which
+  is what a naive draw from several national name lists produces. The observed
+  set is not reproduced here; the shape is the signal, not the instances.
+- **Handles carry YouTube's auto-generated disambiguation suffix** — a hyphen
+  and three random characters, appended when a requested handle is already
+  taken. Its presence indicates the handle was accepted as offered at signup
+  rather than chosen.
 - **No videos and no playlists at either level**, and no external link on the
   top-level account. The website link appears on the featured channels, one hop
   down — the top-level account carries nothing actionable at all.

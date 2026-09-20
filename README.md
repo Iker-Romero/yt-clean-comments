@@ -99,8 +99,10 @@ shelf titles that seed the lexicon.
 - Score normalised featured-channel shelf titles, description and channel name
   against a porn lexicon. Normalisation folds the obfuscation these accounts use
   to evade YouTube's own classifier — homoglyphs, digit substitution, inserted
-  spaces (`S3XClub`, `T E E N P 0 R N`). Text that matches *only* after
-  normalisation is more suspicious than text that matched before it.
+  spacing, emoji framing. Text that matches *only* after normalisation is more
+  suspicious than text that matched before it. The observed strings live in
+  `docs/spam-network.md` and nowhere else: this file is the first thing anyone
+  opening the repository reads, and it is not the place to reproduce them.
 - Soft signals: no videos or playlists but featured-channel shelves present; a
   few hundred to a few thousand subscribers with no content; auto-generated
   handle suffixes (`-w4j`); featured channels already on the blocklist, which

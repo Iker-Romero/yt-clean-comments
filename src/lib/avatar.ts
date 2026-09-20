@@ -23,9 +23,9 @@ function firstMeaningfulChar(text: string): string | null {
 }
 
 /**
- * @param displayName Rendered author name, e.g. "Katsiaryna Isa".
+ * @param displayName Rendered author name, e.g. "Alex Rivera".
  * @param identity    Stable channel identity used for colour selection —
- *                    the handle ("@KatsiarynaIsa-w4j"), never the display
+ *                    the handle ("@alexrivera-w4j"), never the display
  *                    name, which these accounts change freely.
  */
 export function avatarSpecFor(displayName: string, identity: string): AvatarSpec {
