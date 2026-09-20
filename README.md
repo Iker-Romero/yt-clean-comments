@@ -70,12 +70,17 @@ changes.
   Blocking it outright needs a `declarativeNetRequest` rule against the avatar
   CDN, which cannot distinguish comment avatars from every other avatar on the
   page.
-- **Scope is comments only** — watch pages and Shorts. This is the significant
-  one: the channel page reached by clicking a comment avatar is where the
-  explicit images actually are, rendered as the avatars of the featured
-  channels. Covering it needs no detection, only the same unconditional
-  replacement applied to featured-channel shelves, but until that ships a single
-  click leaves the area this extension protects.
+- **Scope is comments only** — watch pages and Shorts. Channel pages are where
+  the explicit images actually render, as the avatars of the featured channels,
+  and extending the replacement to them was **considered and deliberately
+  rejected**. Those channels are reachable only by clicking a comment whose hook
+  has already been removed, so the path is not one anyone walks by accident;
+  covering it would mean blanking every legitimate creator's avatar and every
+  legitimate featured-channel shelf, permanently, against a risk that v1 has
+  already closed upstream. If this is ever revisited, the version worth building
+  is avatar replacement on a channel page *conditional on the channel being
+  flagged*, which needs the detection layer below and is not worth doing without
+  it.
 
 ## Roadmap
 
