@@ -5,6 +5,7 @@ import {
   AUTHOR_LINKS,
   AUTHOR_NAME,
   AVATAR_HOST,
+  AVATAR_IMAGE,
   CLASS,
   IDENTITY_ATTR,
   commentSelector,
@@ -29,8 +30,11 @@ function displayNameOf(comment: Element): string {
 }
 
 function replaceAvatar(comment: Element): void {
-  const host = comment.querySelector(AVATAR_HOST);
-  if (!host) return;
+  // The generated avatar is anchored to the image's own wrapper, never to
+  // `#author-thumbnail` — see the note in dom.ts on the threadline.
+  const image = comment.querySelector(`${AVATAR_HOST} ${AVATAR_IMAGE}`);
+  const anchor = image?.parentElement;
+  if (!anchor) return;
 
   const identity = identityOf(comment);
   const displayName = displayNameOf(comment);
@@ -39,12 +43,15 @@ function replaceAvatar(comment: Element): void {
   if (!identity && !displayName) return;
 
   const key = identity || displayName;
-  const existing = host.querySelector<SVGSVGElement>(`.${CLASS.avatar}`);
+  const existing = anchor.querySelector<SVGSVGElement>(`.${CLASS.avatar}`);
   if (existing?.getAttribute(IDENTITY_ATTR) === key) return;
 
   const svg = existing ?? createAvatarElement();
   paintAvatarElement(svg, avatarSpecFor(displayName, identity), key);
-  if (!existing) host.append(svg);
+  if (!existing) {
+    anchor.classList.add(CLASS.host);
+    anchor.append(svg);
+  }
 }
 
 function scan(root: ParentNode = document): void {

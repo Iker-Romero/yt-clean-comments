@@ -19,11 +19,23 @@ export const COMMENT_HOSTS = [
   'ytm-comment-renderer',
 ] as const;
 
-/** Wrapper around the author's avatar image inside a comment. */
+/**
+ * Wrapper around the author's avatar inside a comment.
+ *
+ * Note what else lives in here: `.threadline`, the connector running from the
+ * avatar down to the replies. It is absolutely positioned against an ancestor
+ * further up, so giving this element a `position` would reparent its containing
+ * block and collapse the line. Nothing may alter its layout — the generated
+ * avatar anchors to the image wrapper instead. See `style.ts`.
+ */
 export const AVATAR_HOST = '#author-thumbnail';
 
-/** Elements that paint the real photo and must be suppressed. */
-export const AVATAR_IMAGE = ['img', 'yt-img-shadow', 'yt-avatar-shape'] as const;
+/**
+ * The element that paints the real photo. Its immediate parent — `yt-img-shadow`
+ * today — is the anchor for the generated avatar: it is sized to the avatar
+ * exactly and contains nothing else, so positioning it is inert.
+ */
+export const AVATAR_IMAGE = 'img';
 
 /**
  * Candidates for the author link, most specific first. The catch-all
@@ -38,6 +50,8 @@ export const AUTHOR_NAME = '#author-text';
 export const CLASS = {
   /** Set on <html> when the user has switched the extension off. */
   off: 'ycc-off',
+  /** Set on the image wrapper we anchor the generated avatar to. */
+  host: 'ycc-host',
   /** Our generated avatar element. */
   avatar: 'ycc-avatar',
 } as const;
