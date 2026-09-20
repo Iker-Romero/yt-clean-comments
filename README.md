@@ -75,13 +75,13 @@ changes.
   from. Its avatar is blanked to a neutral disc rather than replaced. Inside the
   comment section proper the mobile DOM does carry both, and those avatars get
   the same letter treatment as desktop.
-- **The mobile selectors are read from the real DOM but have not been run.**
-  `src/content/dom.ts` now carries the mobile comment host, avatar wrapper,
-  author link and name, taken off `m.youtube.com` rather than guessed. What is
-  still unconfirmed is whether `ytm-profile-icon` — the element the generated
-  avatar anchors to — is a sized block or an inline wrapper. If the letters come
-  out misplaced on mobile that is the reason, and `.ycc-host` in
-  `src/content/style.ts` is where it gets fixed.
+- **Firefox for Android is claimed but has not run on a device.** The mobile
+  selectors in `src/content/dom.ts` are taken off `m.youtube.com` and verified
+  there — `ytm-profile-icon` anchors the generated avatar correctly, and the
+  teaser disc and the letters inside the comment section both render. That test
+  was desktop Chrome under device emulation, which exercises YouTube's mobile
+  DOM but not GeckoView. What is still unconfirmed is `document_start` timing on
+  Firefox for Android, and only a device can confirm it.
 - **The image is still downloaded.** Hiding an element does not cancel its
   request, so the photo reaches the browser cache even though it never paints.
   Blocking it outright needs a `declarativeNetRequest` rule against the avatar
@@ -124,13 +124,13 @@ around it; only the last two items are code.
   the Chrome review as the only thing blocking a release.
 - **Packaging.** `scripts/build.mjs` writes `dist/<target>/` but does not zip
   it, and both stores upload a zip.
-- **Run the mobile build before claiming Android.** `gecko_android` in
-  `src/manifest.ts` promises Firefox for Android. The mobile selectors are no
-  longer a guess, but they have not been exercised. They can be checked without
-  a device — desktop Chrome, device emulation, `m.youtube.com` — since YouTube
-  picks the mobile DOM on user agent rather than on engine. Confirm both the
-  teaser disc and the letters inside the comment section. That leaves only
-  GeckoView's `document_start` timing untested, which does need a device.
+- **Confirm Android on a device.** The mobile DOM is handled and verified
+  under desktop device emulation, so `gecko_android` in `src/manifest.ts` is no
+  longer an empty promise. The one thing emulation cannot reach is GeckoView's
+  `document_start` timing: if the stylesheet lands late on Firefox for Android,
+  the photo gets a visible frame before it is suppressed, which is the single
+  failure this extension most needs to avoid. Worth checking against a signed
+  build before the listing goes up, rather than after.
 
 ### Detection
 

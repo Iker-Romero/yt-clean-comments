@@ -38,8 +38,10 @@ export const AVATAR_HOSTS = ['#author-thumbnail', '.YtmCommentRendererIconContai
 /**
  * The element that paints the real photo. Its immediate parent — `yt-img-shadow`
  * on desktop, `ytm-profile-icon` on mobile — is the anchor for the generated
- * avatar: it is sized to the avatar exactly and contains nothing else, so
- * positioning it is inert.
+ * avatar: both are sized to the avatar exactly and contain nothing else, so
+ * positioning them is inert. Verified on both sites; if a future rename moves
+ * the photo under a wrapper holding anything besides the image, the generated
+ * avatar has to move with it rather than the wrapper being positioned.
  */
 export const AVATAR_IMAGE = 'img';
 
