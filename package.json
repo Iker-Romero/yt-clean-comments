@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Replaces YouTube comment profile pictures with neutral letter avatars.",
+  "description": "Replaces every YouTube comment avatar with a neutral letter disc, removing the bait photo that porn-spam accounts use to recruit — and never marking which accounts they are.",
   "scripts": {
     "build": "node scripts/build.mjs",
     "build:chrome": "node scripts/build.mjs --target=chrome",

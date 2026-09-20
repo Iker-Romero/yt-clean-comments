@@ -9,6 +9,19 @@ export const TARGETS = ['chrome', 'firefox'] as const;
 export type Target = (typeof TARGETS)[number];
 
 const NAME = 'Clean Comments for YouTube';
+
+/**
+ * Deliberately narrower than the repository's own description, which names the
+ * spam network this exists to defeat. Two reasons to keep it mechanical here.
+ *
+ * This string is what the user reads in their extension list every day, and
+ * what the stores show beside the install button: it should say what the
+ * extension does to the page, not re-argue why. And describing a store listing
+ * in terms of pornography invites a mature-content flag on a tool whose whole
+ * point is to be installed by people avoiding that material.
+ *
+ * Kept under 132 characters, the Chrome Web Store's limit.
+ */
 const DESCRIPTION =
   'Replaces every YouTube comment profile picture with a neutral letter avatar.';
 
