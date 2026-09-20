@@ -45,6 +45,9 @@ Two principles follow from this and apply to anything added later:
 
 ## Install
 
+Not yet published to the extension stores — see *Roadmap*. For now it is a local
+build:
+
 ```bash
 npm install
 npm run build
@@ -88,6 +91,39 @@ changes.
 
 ## Roadmap
 
+### Before the extension stores
+
+The extension itself works. What is missing is everything the stores require
+around it; only the last two items are code.
+
+- **Listing assets.** Screenshots and tile images for both stores. The obvious
+  before/after screenshot would put a bait avatar in the listing itself, which
+  is against Chrome Web Store policy on sexually suggestive listing images — the
+  "before" shot has to be an ordinary comment thread with ordinary photos. The
+  point still reads: photographs become letters.
+- **Listing copy.** Written plainly, in terms of what the extension does to the
+  page: one permission, no network access, nothing collected. The abuse pattern
+  is this repository's story to tell, not the store listing's.
+- **Chrome Web Store account.** One-time $5 registration. New accounts start
+  with a two-extension publication limit, which is not a constraint here.
+- **Privacy disclosure.** Chrome requires the data-use certification even when
+  the answer is "none", and here it is none: `storage` holds one boolean and
+  nothing leaves the browser.
+- **AMO submission.** Free, and signing is automated for an add-on this small.
+  Worth doing first — it returns a working install link in minutes, which leaves
+  the Chrome review as the only thing blocking a release.
+- **Packaging.** `scripts/build.mjs` writes `dist/<target>/` but does not zip
+  it, and both stores upload a zip.
+- **Verify the mobile DOM before claiming Android.** `gecko_android` in
+  `src/manifest.ts` promises Firefox for Android while `ytm-comment-renderer` in
+  `src/content/dom.ts` is an unverified guess, so the promise may be empty. The
+  selectors can be checked without a device — desktop Chrome, device emulation,
+  `m.youtube.com` — since YouTube serves the mobile DOM on user agent, not on
+  engine. What that leaves untested is GeckoView's `document_start` timing.
+  Until it is checked, either verify the selectors or drop the Android claim.
+
+### Detection
+
 Detection of the accounts themselves, used to remove their comments silently
 rather than to mark them. [`docs/spam-network.md`](docs/spam-network.md) records
 the observed structure these rules are derived from, including the verbatim
@@ -123,3 +159,7 @@ scripts/        build orchestration and the icon generator
 Every YouTube selector lives in `src/content/dom.ts`, and the stylesheet is
 generated from those same constants at build time, so no selector is written
 twice. When YouTube renames an element, that is the only file to edit.
+
+## License
+
+MIT — see [LICENSE](LICENSE).

@@ -1,6 +1,6 @@
 {
   "name": "yt-clean-comments",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "description": "Replaces YouTube comment profile pictures with neutral letter avatars.",
