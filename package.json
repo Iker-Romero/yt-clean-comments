@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Replaces every YouTube comment avatar with a neutral letter disc, removing the bait photo that porn-spam accounts use to recruit — and never marking which accounts they are.",
+  "description": "Helps you avoid the porn-and-scam network that recruits through YouTube comments, by replacing every commenter's avatar with a neutral letter disc — the bait photo is the only thing doing the recruiting, and no account is ever marked.",
   "scripts": {
     "build": "node scripts/build.mjs",
     "build:chrome": "node scripts/build.mjs --target=chrome",
