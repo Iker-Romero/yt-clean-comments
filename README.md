@@ -67,11 +67,21 @@ changes.
 
 ## Known gaps
 
-- **The mobile site is untested.** Firefox for Android serves `m.youtube.com`,
-  whose comment DOM differs from the desktop one. `ytm-comment-renderer` is
-  listed in `src/content/dom.ts` as a best-effort guess and has not been
-  verified on a device. If avatars still appear on Android, that file is where
-  the fix goes.
+- **The mobile teaser has no name to show.** `m.youtube.com` renders the top
+  comment as a teaser in the metadata carousel, on screen before the comment
+  section is ever opened — so the avatar this extension exists to remove is the
+  first thing you see. That teaser carries no author link, no display name and
+  an empty `aria-label`, so there is nothing to derive a letter or a colour
+  from. Its avatar is blanked to a neutral disc rather than replaced. Inside the
+  comment section proper the mobile DOM does carry both, and those avatars get
+  the same letter treatment as desktop.
+- **The mobile selectors are read from the real DOM but have not been run.**
+  `src/content/dom.ts` now carries the mobile comment host, avatar wrapper,
+  author link and name, taken off `m.youtube.com` rather than guessed. What is
+  still unconfirmed is whether `ytm-profile-icon` — the element the generated
+  avatar anchors to — is a sized block or an inline wrapper. If the letters come
+  out misplaced on mobile that is the reason, and `.ycc-host` in
+  `src/content/style.ts` is where it gets fixed.
 - **The image is still downloaded.** Hiding an element does not cancel its
   request, so the photo reaches the browser cache even though it never paints.
   Blocking it outright needs a `declarativeNetRequest` rule against the avatar
@@ -114,13 +124,13 @@ around it; only the last two items are code.
   the Chrome review as the only thing blocking a release.
 - **Packaging.** `scripts/build.mjs` writes `dist/<target>/` but does not zip
   it, and both stores upload a zip.
-- **Verify the mobile DOM before claiming Android.** `gecko_android` in
-  `src/manifest.ts` promises Firefox for Android while `ytm-comment-renderer` in
-  `src/content/dom.ts` is an unverified guess, so the promise may be empty. The
-  selectors can be checked without a device — desktop Chrome, device emulation,
-  `m.youtube.com` — since YouTube serves the mobile DOM on user agent, not on
-  engine. What that leaves untested is GeckoView's `document_start` timing.
-  Until it is checked, either verify the selectors or drop the Android claim.
+- **Run the mobile build before claiming Android.** `gecko_android` in
+  `src/manifest.ts` promises Firefox for Android. The mobile selectors are no
+  longer a guess, but they have not been exercised. They can be checked without
+  a device — desktop Chrome, device emulation, `m.youtube.com` — since YouTube
+  picks the mobile DOM on user agent rather than on engine. Confirm both the
+  teaser disc and the letters inside the comment section. That leaves only
+  GeckoView's `document_start` timing untested, which does need a device.
 
 ### Detection
 

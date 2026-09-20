@@ -1,4 +1,5 @@
-import { AVATAR_HOST, AVATAR_IMAGE, CLASS, COMMENT_HOSTS } from './dom';
+import { ANONYMOUS_AVATAR_COLOR } from '../lib/palette';
+import { AVATAR_IMAGE, AVATAR_IMAGES, CLASS, COMMENT_HOSTS, TEASER_AVATAR, TEASER_HOST } from './dom';
 
 /** Scopes each suffix under every comment host, skipping the disabled state. */
 function scoped(suffixes: readonly string[]): string {
@@ -18,11 +19,16 @@ function scoped(suffixes: readonly string[]): string {
  * image's immediate wrapper: YouTube's comment DOM positions descendants
  * against ancestors several levels up, so introducing a containing block
  * anywhere else silently breaks unrelated parts of the thread.
+ *
+ * The teaser rule at the bottom is the one exception, and stays within the
+ * spirit of that: it paints a `background` on a YouTube element rather than
+ * giving it a `position`. Background and border-radius create no containing
+ * block and change no box, so nothing can be reparented by them.
  */
 export function buildContentCss(): string {
   return `/* Generated from src/content/dom.ts — do not edit by hand. */
 
-${scoped([`${AVATAR_HOST} ${AVATAR_IMAGE}`])} {
+${scoped(AVATAR_IMAGES)} {
   opacity: 0 !important;
 }
 
@@ -41,6 +47,19 @@ html:not(.${CLASS.off}) .${CLASS.avatar} {
 
 html.${CLASS.off} .${CLASS.avatar} {
   display: none;
+}
+
+/* The teaser carries no author link and no name, so there is no letter to draw
+   and no channel to colour by. Its avatar is blanked to a neutral disc: the
+   photo is hidden and the box it left behind is painted, which needs no element
+   of ours and therefore no positioning. */
+html:not(.${CLASS.off}) ${TEASER_HOST} ${TEASER_AVATAR} {
+  background-color: ${ANONYMOUS_AVATAR_COLOR};
+  border-radius: 50%;
+}
+
+html:not(.${CLASS.off}) ${TEASER_HOST} ${TEASER_AVATAR} ${AVATAR_IMAGE} {
+  opacity: 0 !important;
 }
 `;
 }

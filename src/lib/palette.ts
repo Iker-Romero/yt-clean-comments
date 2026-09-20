@@ -22,3 +22,11 @@ export const AVATAR_PALETTE = [
   '#6b6b5a', // moss
   '#735f55', // umber
 ] as const;
+
+/**
+ * Disc colour for an avatar with no identity behind it — currently only the
+ * comments teaser, which YouTube renders without an author link or a name.
+ * Deliberately outside `AVATAR_PALETTE`: the palette's job is to give a channel
+ * a stable colour, and there is no channel here to be stable about.
+ */
+export const ANONYMOUS_AVATAR_COLOR = '#5f6368';

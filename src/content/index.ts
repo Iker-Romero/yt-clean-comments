@@ -3,11 +3,10 @@ import { loadSettings, onSettingsChanged, type Settings } from '../lib/settings'
 import { createAvatarElement, paintAvatarElement } from './avatar-element';
 import {
   AUTHOR_LINKS,
-  AUTHOR_NAME,
-  AVATAR_HOST,
-  AVATAR_IMAGE,
   CLASS,
   IDENTITY_ATTR,
+  authorNameSelector,
+  avatarImageSelector,
   commentSelector,
 } from './dom';
 
@@ -26,13 +25,13 @@ function identityOf(comment: Element): string {
 }
 
 function displayNameOf(comment: Element): string {
-  return comment.querySelector(AUTHOR_NAME)?.textContent?.trim() ?? '';
+  return comment.querySelector(authorNameSelector())?.textContent?.trim() ?? '';
 }
 
 function replaceAvatar(comment: Element): void {
-  // The generated avatar is anchored to the image's own wrapper, never to
-  // `#author-thumbnail` — see the note in dom.ts on the threadline.
-  const image = comment.querySelector(`${AVATAR_HOST} ${AVATAR_IMAGE}`);
+  // The generated avatar is anchored to the image's own wrapper, never to the
+  // avatar host — see the note in dom.ts on the threadline.
+  const image = comment.querySelector(avatarImageSelector());
   const anchor = image?.parentElement;
   if (!anchor) return;
 
