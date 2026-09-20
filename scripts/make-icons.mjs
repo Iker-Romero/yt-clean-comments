@@ -3,12 +3,16 @@ import { resolve } from 'node:path';
 import { crc32, deflateSync } from 'node:zlib';
 
 /**
- * Draws the toolbar icon: the same neutral letter-avatar disc the extension
- * puts on every comment, with the generic person glyph instead of a letter.
- * Written by hand so the build has no image dependency.
+ * Draws the toolbar icon: the generic person glyph the extension puts in place
+ * of every comment photo, on YouTube red so the icon reads as belonging to
+ * YouTube at 16px. Written by hand so the build has no image dependency.
+ *
+ * The disc colour is deliberately not one of the avatar palette entries — those
+ * are muted so they do not draw the eye, which is the opposite of what a
+ * toolbar icon needs.
  */
 
-const DISC = [0x5b, 0x6b, 0x7a];
+const DISC = [0xff, 0x00, 0x00];
 const GLYPH = [0xff, 0xff, 0xff];
 const SUPERSAMPLE = 3;
 
