@@ -16,8 +16,11 @@ signal.
 3. That profile has no external link and no videos. The payload is the
    **featured channels** section: shelves whose *titles* advertise pornography,
    each shelf holding one channel.
-4. Those featured channels carry the explicit imagery and the external website
-   link, and repeat the structure with more shelves and more channels.
+4. Those featured channels carry the explicit imagery as their avatars, and
+   repeat the structure with more shelves and more channels.
+5. Each featured channel has an **external link in its bio** — to a porn site,
+   or to a redirector that resolves somewhere different on every click and lands
+   on scams. This is the terminus and the reason the rest exists.
 
 Featured channels do not have to be your own, so the top-level account never
 hosts anything that violates policy. It is a pointer, and pointers are cheap to
@@ -87,6 +90,14 @@ Zdislava Truus.
 - **The avatar is the medium at every level.** Bait photo on the comment,
   explicit photos on the featured channels, and those same explicit photos
   rendered on the commenter's own page by the featured-channels shelves.
+- **The outbound link rotates, so the destination is not a usable signal.** Bio
+  links resolving to a different scam on each click cannot be blocklisted by URL
+  and cannot be checked without following them. Detection has to work on what
+  YouTube itself renders — shelf titles, channel metadata, the graph — not on
+  where the chain terminates.
+- **The structure is layered so no single account is actionable.** The commenter
+  hosts nothing, the shelves are other people's channels, and the link sits one
+  hop further down on an account that never touched the original video.
 
 ## Obfuscation inventory
 

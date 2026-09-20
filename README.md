@@ -12,7 +12,11 @@ the account's channel page is where the payload lives, as a wall of "featured
 channels" whose shelf titles advertise pornography and whose avatars are the
 pornography — a shelf renders each channel's picture, so the commenter's profile
 is already a contact-sheet of the material one click from the video, assembled
-out of other accounts so the page hosts nothing of its own.
+out of other accounts so the page hosts nothing of its own. Each of those
+featured channels then carries an external link in its bio, either to a porn
+site or to a rotating redirector that lands somewhere different on every click,
+which is where the scams live. That link is the point of the whole structure;
+everything above it exists to deliver someone to it.
 
 The photo is the only thing doing the recruiting on the video page, so removing
 the photo removes the mechanism there. See
